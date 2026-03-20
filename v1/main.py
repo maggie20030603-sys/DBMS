@@ -2,46 +2,66 @@ import click
 import sys
 import os
 
-# 確保 Python 可以找到同目錄下的 task_manager.py
+# 解決路徑問題，確保匯入正確
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
 from task_manager import TaskManager
 
 tm = TaskManager()
 
 @click.group()
 def cli():
-    """Maggie's Task Manager CLI v1.0"""
+    """🚀 Maggie's Advanced Task Manager v1.0
+    
+    這是一個符合 SDD 規格開發的 CLI 工具。
+    """
     pass
 
 @cli.command()
-@click.option('--title', required=True, help='任務名稱')
+@click.option('--title', '-t', required=True, help='任務的標題描述')
 def add(title):
-    """新增任務指令"""
-    task = tm.add_task(title)
-    click.echo(f"Task added: [{task['id']}] {task['title']}")
+    """新增一個待辦任務到清單中"""
+    try:
+        task = tm.add_task(title)
+        click.secho(f"Successfully added Task #{task['id']}: {task['title']}", fg='green')
+    except Exception as e:
+        click.secho(f"Error: {e}", fg='red', err=True)
 
 @cli.command()
 def list():
-    """列出任務指令"""
+    """顯示目前所有的任務狀態"""
     tasks = tm.list_tasks()
     if not tasks:
-        click.echo("目前沒有任務。")
+        click.echo("Your task list is currently empty. 🏖️")
         return
-    click.echo(f"{'ID':<4} {'狀態':<4} {'任務名稱'}")
-    click.echo("-" * 30)
+
+    click.echo("\n" + "="*45)
+    click.echo(f"{'ID':<5} {'Status':<10} {'Task Title'}")
+    click.echo("-" * 45)
+    
     for t in tasks:
-        status_icon = "✅" if t['status'] == "done" else "❌"
-        click.echo(f"{t['id']:<4} {status_icon:<4} {t['title']}")
+        color = 'green' if t['status'] == 'done' else 'yellow'
+        icon = "✅" if t['status'] == "done" else "⏳"
+        status_text = click.style(f"{icon} {t['status']}", fg=color)
+        click.echo(f"{t['id']:<5} {status_text:<18} {t['title']}")
+    click.echo("="*45 + "\n")
 
 @cli.command()
-@click.option('--id', type=int, required=True, help='任務 ID')
+@click.option('--id', type=int, required=True, help='要完成的任務 ID')
 def done(id):
-    """完成任務指令"""
+    """將任務標記為完成狀態"""
     if tm.mark_done(id):
-        click.echo(f"Task {id} marked as done!")
+        click.secho(f"Task #{id} is now complete! 🌟", fg='cyan')
     else:
-        click.echo(f"Error: 找不到 ID 為 {id} 的任務", err=True)
+        click.secho(f"Error: Task #{id} not found.", fg='red', err=True)
+
+@cli.command()
+@click.option('--id', type=int, required=True, help='要刪除的任務 ID')
+def delete(id):
+    """從清單中永久刪除任務"""
+    if tm.delete_task(id):
+        click.secho(f"Task #{id} has been deleted.", fg='magenta')
+    else:
+        click.secho(f"Error: Task #{id} not found.", fg='red', err=True)
 
 if __name__ == '__main__':
     cli()
