@@ -11,4 +11,4 @@
 graph TD
     CLI[v2/main.py] --> TM[v2/task_manager.py]
     TM --> ST[v2/storage.py]
-    ST --> DB[(tasks_v2.json)]
+    ST --> DB[(tasks_v2.json)] 
