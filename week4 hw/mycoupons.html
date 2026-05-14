@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maggie's Exclusive Coupons</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { border: none; border-radius: 15px; transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .navbar { margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1"><i class="bi bi-ticket-perforated"></i> CouponNet Pro</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2><i class="bi bi-person-heart"></i> My Coupon Collection</h2>
+            <button type="button" class="btn btn-success btn-lg shadow-sm">
+                <i class="bi bi-plus-circle"></i> Add New Coupon
+            </button>
+        </div>
+
+        <div class="alert alert-info d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <div> You have <strong>3</strong> active coupons available to use!</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="card mb-4 shadow">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title text-primary"><i class="bi bi-cup-hot"></i> 50% Off Coffee</h5>
+                            <span class="badge bg-danger">Hot</span>
+                        </div>
+                        <p class="card-text text-muted"><i class="bi bi-shop"></i> Starbucks - Vienna</p>
+                        <p class="card-text">Exclusive discount for International Business students.</p>
+                        
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item"><i class="bi bi-calendar-event"></i> Valid until: 2025-03-31</li>
+                            <li class="list-group-item"><i class="bi bi-qr-code"></i> Code: COFFEE50</li>
+                        </ul>
+                        
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Edit</button>
+                            <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i> Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6">
+                <div class="card mb-4 shadow">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title text-primary"><i class="bi bi-laptop"></i> €10 Off Tech</h5>
+                            <span class="badge bg-secondary">Tech</span>
+                        </div>
+                        <p class="card-text text-muted"><i class="bi bi-shop"></i> MediaMarkt - Berlin</p>
+                        <p class="card-text">Applicable for deep-tech equipment and accessories.</p>
+                        
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item"><i class="bi bi-calendar-event"></i> Valid until: 2025-04-15</li>
+                            <li class="list-group-item"><i class="bi bi-qr-code"></i> Code: TECH10</li>
+                        </ul>
+                        
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Edit</button>
+                            <button class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i> Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 text-muted border-top mt-5">
+        <p>&copy; 2026 Maggie's Portfolio Project - Managed with Bootstrap 5</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
